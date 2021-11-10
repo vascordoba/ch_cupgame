@@ -1,16 +1,18 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
+import colors from "./colors";
 
 const styles = StyleSheet.create({
   startScreen: {
     flex: 1,
     padding: 10,
     alignItems: "center",
+    backgroundColor: colors.back,
   },
   gameScreen: {
     flex: 1,
     padding: 10,
     alignItems: "center",
-    backgroundColor: "#efefef",
+    backgroundColor: colors.back,
   },
   gameBox: {
     flex: 1,
@@ -28,7 +30,7 @@ const styles = StyleSheet.create({
   },
   modalView: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: colors.modal,
     borderRadius: 4,
     padding: 35,
     alignItems: "center",

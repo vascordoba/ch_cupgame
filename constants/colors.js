@@ -1,5 +1,7 @@
 export default {
   primary: "#b8c5d6",
-  accent: "#edf5fc",
+  button: "#a39ba8",
   transp: "transparent",
+  back: "#edf5fc",
+  modal: "#eee",
 };

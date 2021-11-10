@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, View, Modal, Button } from "react-native";
 import styles from "../constants/styles";
+import colors from "../constants/colors";
 
 const WarningModal = (props) => {
   const { visible, onClose } = props;
@@ -11,7 +12,7 @@ const WarningModal = (props) => {
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <Text style={styles.modalText}>Debes iniciar el juego antes de elegir un vaso</Text>
-          <Button title="Cerrar" type="outline" onPress={onClose} />
+          <Button title="Cerrar" color={colors.button} onPress={onClose} />
         </View>
       </View>
     </Modal>

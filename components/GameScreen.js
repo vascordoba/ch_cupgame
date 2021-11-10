@@ -3,7 +3,7 @@ import { View, Button, Dimensions, Animated, StyleSheet, Easing, TouchableWithou
 import FinishModal from "./FinishModal";
 import WarningModal from "./WarningModal";
 import styles from "../constants/styles";
-import Colors from "../constants/colors";
+import colors from "../constants/colors";
 import cup from "../assets/cup.png";
 
 let { width, height } = Dimensions.get("window");
@@ -191,8 +191,8 @@ const GameScreen = (props) => {
 
   return (
     <View style={styles.gameScreen}>
-      <Button title="Iniciar" onPress={triggerAnimation}></Button>
-      <Button title="Terminar" onPress={handleFinishGame}></Button>
+      <Button title="Iniciar" onPress={triggerAnimation} color={colors.button}></Button>
+      <Button title="Terminar" onPress={handleFinishGame} color={colors.button}></Button>
       <View style={styles.gameBox}>
         <TouchableWithoutFeedback onPress={() => handleChoice(0)}>
           <Animated.Image source={cup} style={getStyles(pan1, 1)} />
@@ -217,6 +217,6 @@ const stylesLocal = StyleSheet.create({
     width: CUP_W,
     height: CUP_H,
     padding: 10,
-    backgroundColor: Colors.transp,
+    backgroundColor: colors.transp,
   },
 });
