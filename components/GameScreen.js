@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { View, Text, Button, Dimensions, Animated, StyleSheet, Easing, TouchableWithoutFeedback } from "react-native";
+import { View, Button, Dimensions, Animated, StyleSheet, Easing, TouchableWithoutFeedback } from "react-native";
 import FinishModal from "./FinishModal";
 import WarningModal from "./WarningModal";
 import styles from "../constants/styles";
+import Colors from "../constants/colors";
 import cup from "../assets/cup.png";
 
 let { width, height } = Dimensions.get("window");
@@ -15,7 +16,8 @@ const animation = {
 };
 const iterations = 3;
 
-let SQUARE_DIMENSIONS = 50;
+const CUP_W = 50;
+const CUP_H = 79;
 
 const GameScreen = (props) => {
   const { onEndGame } = props;
@@ -51,36 +53,36 @@ const GameScreen = (props) => {
     }
   };
 
-  const triggerAnimationCup1 = (cb) => {
+  const triggerAnimationCup1 = () => {
     Animated.loop(
       Animated.sequence([
         Animated.timing(pan1, {
           ...animation,
-          toValue: { x: 0, y: height - SQUARE_DIMENSIONS }, //to bottom left
+          toValue: { x: 0, y: height - CUP_H }, //to bottom left
         }),
         Animated.timing(pan1, {
           ...animation,
-          toValue: { x: (width - SQUARE_DIMENSIONS) / 2, y: height - SQUARE_DIMENSIONS }, // to bottom center
+          toValue: { x: (width - CUP_W) / 2, y: height - CUP_H }, // to bottom center
         }),
         Animated.timing(pan1, {
           ...animation,
-          toValue: { x: (width - SQUARE_DIMENSIONS) / 2, y: 0 }, // to top center
+          toValue: { x: (width - CUP_W) / 2, y: 0 }, // to top center
         }),
         Animated.timing(pan1, {
           ...animation,
-          toValue: { x: width - SQUARE_DIMENSIONS, y: 0 }, // to top right
+          toValue: { x: width - CUP_W, y: 0 }, // to top right
         }),
         Animated.timing(pan1, {
           ...animation,
-          toValue: { x: width - SQUARE_DIMENSIONS, y: height - SQUARE_DIMENSIONS }, // to bottom right
+          toValue: { x: width - CUP_W, y: height - CUP_H }, // to bottom right
         }),
         Animated.timing(pan1, {
           ...animation,
-          toValue: { x: (width - SQUARE_DIMENSIONS) / 2, y: height - SQUARE_DIMENSIONS }, // to bottom center
+          toValue: { x: (width - CUP_W) / 2, y: height - CUP_H }, // to bottom center
         }),
         Animated.timing(pan1, {
           ...animation,
-          toValue: { x: (width - SQUARE_DIMENSIONS) / 2, y: 0 }, // to top center
+          toValue: { x: (width - CUP_W) / 2, y: 0 }, // to top center
         }),
         Animated.timing(pan1, {
           ...animation,
@@ -91,80 +93,80 @@ const GameScreen = (props) => {
     ).start();
   };
 
-  const triggerAnimationCup2 = (cb) => {
+  const triggerAnimationCup2 = () => {
     Animated.loop(
       Animated.sequence([
         Animated.timing(pan2, {
           ...animation,
-          toValue: { x: 0, y: height - SQUARE_DIMENSIONS }, // return to start
+          toValue: { x: 0, y: height - CUP_H },
         }),
         Animated.timing(pan2, {
           ...animation,
-          toValue: { x: -((width - SQUARE_DIMENSIONS) / 2), y: height - SQUARE_DIMENSIONS }, //to bottom left
+          toValue: { x: -((width - CUP_W) / 2), y: height - CUP_H },
         }),
         Animated.timing(pan2, {
           ...animation,
-          toValue: { x: -((width - SQUARE_DIMENSIONS) / 2), y: 0 }, // to bottom center
+          toValue: { x: -((width - CUP_W) / 2), y: 0 },
         }),
         Animated.timing(pan2, {
           ...animation,
-          toValue: { x: 0, y: 0 }, // to top center
+          toValue: { x: 0, y: 0 },
         }),
         Animated.timing(pan2, {
           ...animation,
-          toValue: { x: 0, y: height - SQUARE_DIMENSIONS }, // to top right
+          toValue: { x: 0, y: height - CUP_H },
         }),
         Animated.timing(pan2, {
           ...animation,
-          toValue: { x: (width - SQUARE_DIMENSIONS) / 2, y: height - SQUARE_DIMENSIONS }, // to bottom right
+          toValue: { x: (width - CUP_W) / 2, y: height - CUP_H },
         }),
         Animated.timing(pan2, {
           ...animation,
-          toValue: { x: (width - SQUARE_DIMENSIONS) / 2, y: 0 }, // to bottom center
+          toValue: { x: (width - CUP_W) / 2, y: 0 },
         }),
         Animated.timing(pan2, {
           ...animation,
-          toValue: { x: 0, y: 0 }, // to top center
+          toValue: { x: 0, y: 0 },
         }),
       ]),
       { iterations: iterations }
     ).start();
   };
 
-  const triggerAnimationCup3 = (cb) => {
+  const triggerAnimationCup3 = () => {
     Animated.loop(
       Animated.sequence([
         Animated.timing(pan3, {
           ...animation,
-          toValue: { x: -((width - SQUARE_DIMENSIONS) / 2), y: 0 }, // return to start
+          toValue: { x: -((width - CUP_W) / 2), y: 0 },
         }),
         Animated.timing(pan3, {
           ...animation,
-          toValue: { x: -((width - SQUARE_DIMENSIONS) / 2), y: height - SQUARE_DIMENSIONS }, //to bottom left
+          toValue: { x: -((width - CUP_W) / 2), y: height - CUP_H },
         }),
         Animated.timing(pan3, {
           ...animation,
-          toValue: { x: -(width - SQUARE_DIMENSIONS), y: height - SQUARE_DIMENSIONS }, // to bottom center
+          toValue: { x: -(width - CUP_W), y: height - CUP_H },
         }),
         Animated.timing(pan3, {
           ...animation,
-          toValue: { x: -(width - SQUARE_DIMENSIONS), y: 0 }, // to top center
+          toValue: { x: -(width - CUP_W), y: 0 },
         }),
         Animated.timing(pan3, {
           ...animation,
-          toValue: { x: -((width - SQUARE_DIMENSIONS) / 2), y: 0 }, // to top right
+          toValue: { x: -((width - CUP_W) / 2), y: 0 },
         }),
         Animated.timing(pan3, {
           ...animation,
-          toValue: { x: -((width - SQUARE_DIMENSIONS) / 2), y: height - SQUARE_DIMENSIONS }, // to bottom right
+          toValue: { x: -((width - CUP_W) / 2), y: height - CUP_H },
         }),
         Animated.timing(pan3, {
           ...animation,
-          toValue: { x: 0, y: height - SQUARE_DIMENSIONS }, // to bottom center
+          toValue: { x: 0, y: height - CUP_H },
         }),
         Animated.timing(pan3, {
           ...animation,
-          toValue: { x: 0, y: 0 }, // to top center
+          toValue: { x: 0, y: 0 },
         }),
       ]),
       { iterations: iterations }
@@ -189,7 +191,6 @@ const GameScreen = (props) => {
 
   return (
     <View style={styles.gameScreen}>
-      <Text>Juego terminado</Text>
       <Button title="Iniciar" onPress={triggerAnimation}></Button>
       <Button title="Terminar" onPress={handleFinishGame}></Button>
       <View style={styles.gameBox}>
@@ -213,9 +214,9 @@ export default GameScreen;
 
 const stylesLocal = StyleSheet.create({
   square1: {
-    width: SQUARE_DIMENSIONS,
-    height: SQUARE_DIMENSIONS + 29,
+    width: CUP_W,
+    height: CUP_H,
     padding: 10,
-    backgroundColor: "transparent",
+    backgroundColor: Colors.transp,
   },
 });
